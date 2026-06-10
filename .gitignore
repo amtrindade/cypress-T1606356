@@ -1,0 +1,32 @@
+# Dependencias Node.js
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Arquivos de ambiente local
+.env
+.env.*
+!.env.example
+
+# Build/cobertura/cache
+dist/
+build/
+coverage/
+.cache/
+
+# Cypress artifacts
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# Cypress binary/cache local (quando usado no projeto)
+.cypress-cache/
+
+# Sistema/IDE
+.DS_Store
+.idea/
+.vscode/
