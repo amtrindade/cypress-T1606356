@@ -63,6 +63,61 @@ describe('Testando asserções no playground do curso de Automação', () => {
         expect(floatNum).to.be.a('number')
 
         expect(floatNum).to.be.closeTo(3.14, 0.01) // Validação de número float com margem de erro
-    })      
+    })
+    
+    it('Validações do tipo Array', () => {
+
+        const arrInt = [1, 2, 3, 4, 5]
+        expect(arrInt).to.be.an('array')
+        expect(arrInt).to.have.lengthOf(5)
+        expect(arrInt).to.include(3)
+        expect(arrInt).to.include.members([2, 4])
+        expect(arrInt).to.not.include(6)
+        expect(arrInt).to.deep.equal([ 1, 2, 3, 4, 5])
+        expect(arrInt[1]).to.be.equal(2)
+
+        const arrStr = ['Hello', 'World', 'Cypress']
+        expect(arrStr).to.be.an('array')
+        expect(arrStr).to.have.lengthOf(3)
+        expect(arrStr).to.include('World')
+        expect(arrStr).to.include.members(['Hello', 'Cypress'])
+        expect(arrStr).to.not.include('Hi')
+        expect(arrStr).to.deep.equal(['Hello', 'World', 'Cypress'])
+        expect(arrStr[0]).to.be.equal('Hello')
+    })
+
+    it('Validações do tipo Object', () => {
+
+        const person = { 
+            name: 'Pedro', 
+            age: 35,
+            weight: 80,
+            height: 1.75
+        }
+
+        expect(person).to.be.an('object')
+        expect(person).to.have.property('name')
+        expect(person).to.have.property('age')
+        expect(person).to.have.property('weight')
+        expect(person).to.have.property('height')
+
+        expect(person.name).to.be.equal('Pedro')
+        expect(person.age).to.be.equal(35)
+        expect(person.height).to.be.greaterThan(1.70)
+
+        const person2 = { 
+            name: 'Pedro', 
+            age: 35,
+            weight: 80,
+            height: 1.75
+        }
+        // Validação de dois objetos diferentes
+        expect(person).to.be.not.equal(person2)
+        // Validação de dois objetos diferentes mas com os mesmos valores nos atributos
+        expect(person).to.deep.equal(person2) // Validação de objetos com comparação profunda (deep equal)
+        expect(person.name).to.be.equal(person2.name)
+    })
+
+        
 
 })

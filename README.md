@@ -57,6 +57,7 @@ Para abrir a interface gráfica do Cypress:
 ```bash
 # Com npm
 npm run open
+npm run cy:open
 
 # Ou diretamente com npx
 npx cypress open
