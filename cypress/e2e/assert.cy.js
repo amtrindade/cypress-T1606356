@@ -105,7 +105,7 @@ describe('Testando asserções no playground do curso de Automação', () => {
         expect(person.age).to.be.equal(35)
         expect(person.height).to.be.greaterThan(1.70)
 
-        const person2 = { 
+        const person2 =  { 
             name: 'Pedro', 
             age: 35,
             weight: 80,
