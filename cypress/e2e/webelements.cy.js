@@ -34,7 +34,7 @@ describe('Validação de Web Elements', () => {
         cy.get('[name="chkbox"]').should('have.length', 4)
         
         //Validação por posição do elemento
-        cy.get('[name="chkbox"]').check(['Check 1', 'Check 3'])
+        cy.get('[name="chkbox"]').check(['Check 1', 'Check 3']).should('be.checked')
         cy.get('[name="chkbox"]').eq(0).should('be.checked')
         cy.get('[name="chkbox"]').eq(2).should('be.checked')
         cy.get('[name="chkbox"]').eq(1).should('not.be.checked')
