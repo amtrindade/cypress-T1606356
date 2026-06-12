@@ -45,6 +45,16 @@ describe('Validação de Web Elements', () => {
         cy.get('[name="chkbox"]').eq(2).should('be.checked')
     })
 
+    it('Deve validar o select single', () => {
+        cy.get('[name="dropdownlist"]').select('Item 2')
+        cy.get('[name="dropdownlist"] > option[value="item2"]').should('be.selected')
+
+        cy.get('[name="dropdownlist"] option').should('have.length', 10)
+
+    })
+
+
+
 
 
 })
