@@ -52,9 +52,4 @@ describe('Validação de Web Elements', () => {
         cy.get('[name="dropdownlist"] option').should('have.length', 10)
 
     })
-
-
-
-
-
 })
