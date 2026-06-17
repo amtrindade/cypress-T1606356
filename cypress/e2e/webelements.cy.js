@@ -52,4 +52,15 @@ describe('Validação de Web Elements', () => {
         cy.get('[name="dropdownlist"] option').should('have.length', 10)
 
     })
+
+    it('Deve validar o select multiple', () => {
+        cy.get('[name="multiselectdropdown"]').select(['Item 2', 'Item 3'])
+        cy.get('[name="multiselectdropdown"] > option[value="item2"]').should('be.selected')
+        cy.get('[name="multiselectdropdown"] > option[value="item3"]').should('be.selected')
+        cy.get('[name="multiselectdropdown"] > option[value="item1"]').should('not.be.selected')
+
+        cy.get('[name="multiselectdropdown"] option').should('have.length', 10)
+
+        //TODO - Validar quantos itens estao selectionados
+    })
 })
