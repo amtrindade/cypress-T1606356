@@ -5,7 +5,7 @@ describe('Validação de Web Elements', () => {
     })
 
     it('Deve validar o label no início da página', () => {
-        cy.get('.masthead > .text-muted').should('have.text', 'Treinamento em Automação de Testes')
+        cy.get('.masthead > .text-muted').should('have.text', 'Treinamento em Au tomação de Testes')
     })
 
     it('Deve validar textFields', () => {
@@ -53,8 +53,9 @@ describe('Validação de Web Elements', () => {
 
     })
 
-    it('Deve validar o select multiple', () => {
-        cy.get('[name="multiselectdropdown"]').select(['Item 2', 'Item 3', 'Item 4'])
+    it.only('Deve validar o select multiple', () => {
+       cy.get('[name="multiselectdropdown"]').select(['Item 4', 'Item 3', 'Item 2'])
+
         cy.get('[name="multiselectdropdown"] > option[value="item2"]').should('be.selected')
         cy.get('[name="multiselectdropdown"] > option[value="item3"]').should('be.selected')
         cy.get('[name="multiselectdropdown"] > option[value="item4"]').should('be.selected')
@@ -62,6 +63,16 @@ describe('Validação de Web Elements', () => {
 
         cy.get('[name="multiselectdropdown"] option').should('have.length', 10)
 
-        //TODO - Validar quantos itens estao selectionados
+        //Validação do número de opções selecionadas com should
+        cy.get('[name="multiselectdropdown"] option:selected').should('have.length', 3)
+
+        //Validação do número de opções selecionadas com then
+        cy.get('[name="multiselectdropdown"] option:selected').then($selectedOptions => {
+            expect($selectedOptions).to.have.length(3)
+            expect($selectedOptions[0].value).to.equal('item2')
+            expect($selectedOptions[1].value).to.equal('item3')
+            expect($selectedOptions[2].value).to.equal('item4')
+        })
+        
     })
 })
