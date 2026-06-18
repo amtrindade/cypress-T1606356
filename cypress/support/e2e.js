@@ -15,3 +15,18 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+
+//Forma alternativa de importar os comandos personalizados 
+// Voce pode alterar ou alterar sua ordem de prioridade na busca por elementos utilizando os atributos data-cy, data-test, etc.
+// Cypress.ElementSelector.defaults({
+//   selectorPriority: [
+//     'data-cy',
+//     'data-test',
+//     'attribute:role',
+//     'attribute:aria-labelledby',
+//     'name',
+//     'id',
+//     'class',
+//     'attributes',
+//   ],
+// })
