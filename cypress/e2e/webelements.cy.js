@@ -5,7 +5,7 @@ describe('Validação de Web Elements', () => {
     })
 
     it('Deve validar o label no início da página', () => {
-        cy.get('.masthead > .text-muted').should('have.text', 'Treinamento em Au tomação de Testes')
+        cy.get('.masthead > .text-muted').should('have.text', 'Treinamento em Automação de Testes')
     })
 
     it('Deve validar textFields', () => {
@@ -53,7 +53,7 @@ describe('Validação de Web Elements', () => {
 
     })
 
-    it.only('Deve validar o select multiple', () => {
+    it('Deve validar o select multiple', () => {
        cy.get('[name="multiselectdropdown"]').select(['Item 4', 'Item 3', 'Item 2'])
 
         cy.get('[name="multiselectdropdown"] > option[value="item2"]').should('be.selected')
@@ -74,5 +74,17 @@ describe('Validação de Web Elements', () => {
             expect($selectedOptions[2].value).to.equal('item4')
         })
         
+    })
+
+    it('Trabalhando com iframes', () => {
+
+        cy.get('#frame1')
+            .its('0.contentDocument.body')
+                .should('not.be.empty')
+                .then(cy.wrap)
+                    .within(() => {
+                        cy.get('input[id="tfiframe"]').type('teste do iframe')
+                            .should('have.value', 'teste do iframe')
+                    })
     })
 })
