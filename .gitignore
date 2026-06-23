@@ -30,3 +30,7 @@ cypress/downloads/
 .DS_Store
 .idea/
 .vscode/
+
+# Arquivos de poc
+bb-login.cy.js
+
