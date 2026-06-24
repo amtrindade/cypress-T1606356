@@ -1,7 +1,4 @@
 const locators = {
-   LOGIN: {
-        BTN_REGISTER: '.ihdmxA'
-   },
     REGISTER: {
         TF_EMAIL: ':nth-child(2) > [name="email"]',
         TF_NAME: '[name="name"]',
@@ -16,12 +13,25 @@ const locators = {
         BTN_CLOSE_MODAL: '#btnCloseModal'
     },
     LOGIN: {
+        BTN_REGISTER: '.ihdmxA',
         TF_EMAIL: ':nth-child(1) > [name="email"]',
         TF_PASSWORD: '.style__ContainerFormLogin-sc-1wbjw6k-0 > .login__password > .style__ContainerFieldInput-sc-s3e9ea-0 > [name="password"]',
         BTN_LOGIN: '.otUnI'
     },
     HOME: {
-        LBL_TEXT_LOGIN: '#textName'
+        LBL_TEXT_LOGIN: '#textName',
+        BTN_TRANSFERENCIA: '#btn-TRANSFERÊNCIA',
+        BTN_EXTRATO: '#btn-EXTRATO'
+    },
+    TRANSFER:{
+        TF_ACCOUNT_NUMBER: '[name="accountNumber"]',
+        TF_DIGIT: '[name="digit"]',
+        TF_TRANSFER_VALUE: '[name="transferValue"]',
+        TF_DESCRIPTION: '[name="description"]',
+        BTN_TRANSFER: '.style__ContainerButton-sc-1wsixal-0'
+    },
+    BALANCE: {
+        LBL_BALANCE_AVAILABLE: '#textBalanceAvailable'
     }
 
 }

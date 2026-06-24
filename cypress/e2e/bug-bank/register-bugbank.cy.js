@@ -18,9 +18,7 @@ describe('Deve cadastrar uma nova conta', () => {
         cy.visit('https://bugbank.netlify.app/')
     })
 
-    it ('Deve cadastrar uma nova conta', () => {
-        cy.get(loc.LOGIN.BTN_REGISTER).click()
-
+    it('Deve cadastrar uma nova conta', () => {
         cy.register('target@mail.com.br', 'Target Teste', '123', true)
 
         let numeroContaCriada = ''
@@ -29,6 +27,8 @@ describe('Deve cadastrar uma nova conta', () => {
             numeroContaCriada = numeroConta
             cy.log(`Numero da conta salvo na variavel: ${numeroContaCriada}`)
         })
+
+        cy.get(loc.MODAL.MODAL_TEXT).should('contain.text', 'foi criada com sucesso')
 
         cy.get(loc.MODAL.BTN_CLOSE_MODAL).click()       
 
