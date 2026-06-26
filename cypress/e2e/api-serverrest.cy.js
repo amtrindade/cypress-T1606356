@@ -33,7 +33,7 @@ describe('API Server REST', () => {
 
         const user = {
             nome: 'Aluno Target',
-            email: `target${Math.floor(Math.random() * 1000)}@teste.com`,
+            email: `target${Math.floor(Math.random() * 10000)}@teste.com`,
             password: 'teste',
             administrador: 'true'
         }
@@ -68,7 +68,7 @@ describe('API Server REST', () => {
 
         const user = {
             nome: 'Aluno Target',
-            email: `target${Math.floor(Math.random() * 1000)}@teste.com`,
+            email: `target${Math.floor(Math.random() * 10000)}@teste.com`,
             password: 'teste',
             administrador: 'true'
         }
@@ -94,4 +94,80 @@ describe('API Server REST', () => {
             })
         }) 
     })
-})
+
+    it('Deve editar um usuário com sucesso', () => {
+
+        const user = {
+            nome: 'Aluno Target',
+            email: `target${Math.floor(Math.random() * 1000)}@teste.com`,            
+            password: 'teste',            
+            administrador: 'true'
+        }
+
+        cy.request({
+            method: 'POST',
+            url: 'https://serverest.dev/usuarios',
+            body: user
+        }).then((response) => {
+            expect(response.status).to.eq(201)
+            expect(response.body).to.have.property('message')
+            expect(response.body.message).to.eq('Cadastro realizado com sucesso')
+            const userId = response.body._id
+            
+            const updatedUser = {
+                nome: 'Aluno Target Updated',
+                email: `target${Math.floor(Math.random() * 10000)}@teste.com`,            
+                password: 'teste',            
+                administrador: 'true'
+            }
+            
+            cy.request({
+                method: 'PUT',
+                url: `https://serverest.dev/usuarios/${userId}`,
+                body: updatedUser
+            }).then((response) => {
+                expect(response.status).to.eq(200)
+                expect(response.body).to.have.property('message')
+                expect(response.body.message).to.eq('Registro alterado com sucesso')
+
+                cy.request({
+                    method: 'GET',
+                    url: `https://serverest.dev/usuarios/${userId}`,
+                }).then((getResponse) => {
+                    expect(getResponse.status).to.eq(200)
+                    expect(getResponse.body.nome).to.eq(updatedUser.nome)
+                })
+            })  
+        }) 
+    })
+
+    it('Deve deletar um usuário com sucesso', () => {
+
+        const user = {
+            nome: 'Aluno Target',
+            email: `target${Math.floor(Math.random() * 10000)}@teste.com`,            
+            password: 'teste',            
+            administrador: 'true'
+        }
+
+        cy.request({
+            method: 'POST',
+            url: 'https://serverest.dev/usuarios',
+            body: user
+        }).then((response) => {
+            expect(response.status).to.eq(201)
+            expect(response.body).to.have.property('message')
+            expect(response.body.message).to.eq('Cadastro realizado com sucesso')
+            const userId = response.body._id
+
+            cy.request({
+                method: 'DELETE',
+                url: `https://serverest.dev/usuarios/${userId}`,
+            }).then((deleteResponse) => {
+                expect(deleteResponse.status).to.eq(200)
+                expect(deleteResponse.body).to.have.property('message')
+                expect(deleteResponse.body.message).to.eq('Registro excluído com sucesso')           
+            })
+        }) 
+    })  
+})  
