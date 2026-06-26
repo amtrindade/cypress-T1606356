@@ -35,6 +35,3 @@ cypress/reports/
 # Arquivos de poc
 bb-login.cy.js
 
-# Ignora package lock
-package-lock.json
-
