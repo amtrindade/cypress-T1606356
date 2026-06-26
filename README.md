@@ -108,7 +108,7 @@ npx cypress run --browser edge
 
 ```bash
 # Gerar relatório Mochawesome
-npx cypress run --reporter mochawesome
+npx cypress run
 ```
 
 ## Configuração

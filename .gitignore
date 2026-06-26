@@ -22,6 +22,7 @@ coverage/
 cypress/videos/
 cypress/screenshots/
 cypress/downloads/
+cypress/reports/
 
 # Cypress binary/cache local (quando usado no projeto)
 .cypress-cache/

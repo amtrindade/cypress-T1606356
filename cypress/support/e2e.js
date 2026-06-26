@@ -15,6 +15,7 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+import 'cypress-mochawesome-reporter/register'
 
 //Forma alternativa de importar os comandos personalizados 
 // Voce pode alterar ou alterar sua ordem de prioridade na busca por elementos utilizando os atributos data-cy, data-test, etc.
@@ -30,3 +31,4 @@ import './commands'
 //     'attributes',
 //   ],
 // })
+
